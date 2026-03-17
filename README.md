@@ -39,12 +39,12 @@ started the dVRK system node in a separate terminal.
 
 Examples:
 ```bash
-roslaunch dvrk_model arm.launch arm:=PSM1 generation:=Si
-roslaunch dvrk_model arm.launch arm:=MTMR generation:=Classic simulated:=False
-roslaunch dvrk_model arm.launch arm:=ECM generation:=Classic
-roslaunch dvrk_model patient_cart.launch generation:=Si
-roslaunch dvrk_model patient_cart.launch generation:=Classic simulated:=False
-roslaunch dvrk_model surgeon_console.launch
+ros2 launch dvrk_model arm.launch arm:=PSM1 generation:=Si instrument:=420006
+ros2 launch dvrk_model arm.launch arm:=MTMR generation:=Classic simulated:=False
+ros2 launch dvrk_model arm.launch arm:=ECM generation:=Classic
+ros2 launch dvrk_model patient_cart.launch generation:=Si PSM1_instrument:=420006 PSM2_instrument:=420003
+ros2 launch dvrk_model patient_cart.launch generation:=Classic simulated:=False
+ros2 launch dvrk_model surgeon_console.launch
 ```
 
 ## URDF files
@@ -56,7 +56,7 @@ names are for parts or full system (e.g. `patient_cart`,
 
 `xacro` stands for XML macro, i.e. parameterized XML code.  `xacro` files can be "compiled" using:
 ```bash
-rosrun xacro xacro mtm.urdf.xacro .... > result.urdf
+ros2 run xacro xacro mtm.urdf.xacro .... > result.urdf
 ```
 
 Parts:

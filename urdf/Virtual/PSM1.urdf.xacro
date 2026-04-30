@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<robot name="PSM1" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!--
+    Virtual PSM1 entry point — simulator variant.
+
+    args:
+      tool_model   — instrument model number (default: 420006 = Si large needle driver)
+      shaft_length — shaft length in metres  (0.4162 Classic, 0.4670 Si)
+      rcm_xyz      — trocar position in world frame
+      rcm_rpy      — trocar orientation in world frame
+  -->
+  <xacro:arg name="tool_model"   default="420006"/>
+  <xacro:arg name="rcm_xyz"      default="0 0 0"/>
+  <xacro:arg name="rcm_rpy"      default="0 0 0"/>
+
+  <xacro:include filename="$(find dvrk_model)/urdf/Virtual/PSM_base_virtual.urdf.xacro"/>
+  <xacro:include filename="$(find dvrk_model)/urdf/common/PSM_instrument.urdf.xacro"/>
+
+  <link name="world"/>
+
+  <!-- 3 virtual DOFs at the trocar — no arm geometry -->
+  <xacro:PSM_base_virtual prefix="PSM1_"
+                          rcm_xyz="$(arg rcm_xyz)"
+                          rcm_rpy="$(arg rcm_rpy)"/>
+
+  <!-- Instrument: identical to Classic/Si — attaches at PSM_tool_parent_link -->
+  <xacro:PSM_instrument prefix="PSM1_"
+                        parent_link="PSM1_PSM_tool_parent_link"
+                        tool_model="$(arg tool_model)"/>
+
+</robot>

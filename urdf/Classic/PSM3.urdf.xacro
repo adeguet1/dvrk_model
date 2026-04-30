@@ -1,14 +1,18 @@
 <?xml version="1.0" ?>
-<robot name="dvrk_psm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="PSM3" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="tool_model" default="400049"/>
 
-  <xacro:include filename="$(find dvrk_model)/urdf/Classic/psm_base.urdf.xacro"/>
-  <xacro:include filename="$(find dvrk_model)/urdf/Classic/psm_tool.urdf.xacro"/>
+  <xacro:include filename="$(find dvrk_model)/urdf/Classic/PSM_base.urdf.xacro"/>
+  <xacro:include filename="$(find dvrk_model)/urdf/common/PSM_instrument.urdf.xacro"/>
 
   <link name="world"/>
-  <xacro:psm_base
-      prefix="PSM3_"
-      parent_link="world"
-      xyz="0.50 0.0 0.5" rpy="0.0 0.0 ${-PI}"/>
-  <xacro:psm_tool tool_name="caudier" prefix="PSM3_"/>
+
+  <xacro:PSM_base prefix="PSM3_"
+                  parent_link="world"
+                  xyz="0.50 0.0 0.5" rpy="0.0 0.0 ${-pi}"/>
+
+  <xacro:PSM_instrument prefix="PSM3_"
+                        parent_link="PSM3_PSM_tool_parent_link"
+                        tool_model="$(arg tool_model)"/>
 
 </robot>

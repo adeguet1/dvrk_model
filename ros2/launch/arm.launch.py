@@ -12,6 +12,7 @@ from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 def generate_launch_description():
     arm = LaunchConfiguration('arm')
     generation = LaunchConfiguration('generation')
+    instrument = LaunchConfiguration('instrument', default='400006')
     simulated = LaunchConfiguration('simulated', default = 'true')
     use_sim_time = LaunchConfiguration('use_sim_time', default = 'false')
     rate = LaunchConfiguration('rate', default = 50.0)  # Hz, default is 10 so we're increasing that a bit.
@@ -44,6 +45,7 @@ def generate_launch_description():
         launch_arguments = {
             'arm': arm,
             'generation': generation,
+            'instrument': instrument,
             'use_sim_time': use_sim_time,
             'rate': rate,
             'suj': 'false'

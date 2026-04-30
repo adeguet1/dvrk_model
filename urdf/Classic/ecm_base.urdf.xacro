@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<robot name="ecm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="ECM" xmlns:xacro="http://www.ros.org/wiki/xacro">
   <!-- Colors -->
   <xacro:include filename="$(find dvrk_model)/urdf/common.urdf.xacro"/>
 
@@ -20,13 +20,8 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_base_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_base.stl" />
         </geometry>
-        <material
-          name="">
-          <color
-            rgba="0.64706 0.61961 0.58824 1" />
-        </material>
       </visual>
       <collision>
         <origin
@@ -34,7 +29,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_base_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_base.stl" />
         </geometry>
       </collision>
     </link>
@@ -46,13 +41,8 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_yaw_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_outer_yaw.stl" />
         </geometry>
-        <material
-          name="">
-          <color
-            rgba="0.64706 0.61961 0.58824 1" />
-        </material>
       </visual>
       <collision>
         <origin
@@ -60,7 +50,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_yaw_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_outer_yaw.stl" />
         </geometry>
       </collision>
     </link>
@@ -69,7 +59,7 @@
       type="revolute">
       <origin
         xyz="0.0731999999999783 0 0.101460000000185"
-        rpy="1.57079632679615 0 1.5707963267949" />
+        rpy="${PI_2} 0 ${PI_2}" />
       <parent
         link="${prefix}base_link" />
       <child
@@ -90,13 +80,8 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_pitch_front_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_pitch_front.stl" />
         </geometry>
-        <material
-          name="">
-          <color
-            rgba="0.64706 0.61961 0.58824 1" />
-        </material>
       </visual>
       <collision>
         <origin
@@ -104,7 +89,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_pitch_front_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_pitch_front.stl" />
         </geometry>
       </collision>
     </link>
@@ -113,7 +98,7 @@
       type="revolute">
       <origin
         xyz="0 0 0.199000000000014"
-        rpy="3.14 -1.5707963267949 0" />
+        rpy="${PI} -${PI_2} 0" />
       <parent
         link="${prefix}yaw_link" />
       <child
@@ -134,13 +119,8 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_pitch_bottom_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_pitch_bottom.stl" />
         </geometry>
-        <material
-          name="">
-          <color
-            rgba="0.25098 0.25098 0.25098 1" />
-        </material>
       </visual>
       <collision>
         <origin
@@ -148,7 +128,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_pitch_bottom_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_pitch_bottom.stl" />
         </geometry>
       </collision>
     </link>
@@ -179,13 +159,8 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_pitch_end_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_pitch_end.stl" />
         </geometry>
-        <material
-          name="">
-          <color
-            rgba="0.89804 0.91765 0.92941 1" />
-        </material>
       </visual>
       <collision>
         <origin
@@ -193,7 +168,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_pitch_end_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_pitch_end.stl" />
         </geometry>
       </collision>
     </link>
@@ -224,13 +199,8 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_main_insertion_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_main_insertion.stl" />
         </geometry>
-        <material
-          name="">
-          <color
-            rgba="0.25 0.25 0.25 1" />
-        </material>
       </visual>
       <collision>
         <origin
@@ -238,7 +208,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_main_insertion_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_main_insertion.stl" />
         </geometry>
       </collision>
     </link>
@@ -247,7 +217,7 @@
       type="prismatic">
       <origin
         xyz="0.042 -0.086143 0"
-        rpy="-1.5708 0 0" />
+        rpy="-${PI_2} 0 0" />
       <parent
         link="${prefix}pitch_end_link" />
       <child
@@ -268,13 +238,8 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_tool_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_tool.stl" />
         </geometry>
-        <material
-          name="">
-          <color
-            rgba="0.7 0.7 0.7 1" />
-        </material>
       </visual>
       <collision>
         <origin
@@ -282,7 +247,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_tool_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_tool.stl" />
         </geometry>
       </collision>
     </link>
@@ -312,13 +277,8 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_pitch_top_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_pitch_top.stl" />
         </geometry>
-        <material
-          name="">
-          <color
-            rgba="0.64706 0.51765 0 1" />
-        </material>
       </visual>
       <collision>
         <origin
@@ -326,7 +286,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_pitch_top_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_pitch_top.stl" />
         </geometry>
       </collision>
     </link>
@@ -357,13 +317,8 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_pitch_back_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_pitch_back.stl" />
         </geometry>
-        <material
-          name="">
-          <color
-            rgba="0.64706 0.51765 0 1" />
-        </material>
       </visual>
       <collision>
         <origin
@@ -371,7 +326,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_pitch_back_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_pitch_back.stl" />
         </geometry>
       </collision>
     </link>
@@ -380,7 +335,7 @@
       type="revolute">
       <origin
         xyz="0 -0.00979999999999302 0.162430000000002"
-        rpy="3.14 -1.5707963267949 0" />
+        rpy="${PI} -${PI_2} 0" />
       <parent
         link="${prefix}yaw_link" />
       <child
@@ -402,13 +357,8 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_remote_center_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_RCM.stl" />
         </geometry>
-        <material
-          name="">
-          <color
-            rgba="1.0 0.7 0.7 1" />
-        </material>
       </visual>
       <collision>
         <origin
@@ -416,7 +366,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://dvrk_model/meshes/Classic/ECM/ecm_remote_center_link.stl" />
+            filename="package://dvrk_model/meshes/Classic/ECM/ECM_RCM.stl" />
         </geometry>
       </collision>
     </link>
@@ -425,7 +375,7 @@
       type="fixed">
       <origin
         xyz="0.612599207482277 0 0.10159534323531"
-        rpy="0 0 -1.5707963267949" />
+        rpy="0 0 -${PI_2}" />
       <parent
         link="${prefix}base_link" />
       <child

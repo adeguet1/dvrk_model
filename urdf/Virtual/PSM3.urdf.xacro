@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<robot name="PSM3" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="tool_model"   default="420006"/>
+  <xacro:arg name="rcm_xyz"      default="0 0 0"/>
+  <xacro:arg name="rcm_rpy"      default="0 0 0"/>
+
+  <xacro:include filename="$(find dvrk_model)/urdf/Virtual/PSM_base_virtual.urdf.xacro"/>
+  <xacro:include filename="$(find dvrk_model)/urdf/common/PSM_instrument.urdf.xacro"/>
+
+  <link name="world"/>
+
+  <xacro:PSM_base_virtual prefix="PSM3_"
+                          rcm_xyz="$(arg rcm_xyz)"
+                          rcm_rpy="$(arg rcm_rpy)"/>
+
+  <xacro:PSM_instrument prefix="PSM3_"
+                        parent_link="PSM3_PSM_tool_parent_link"
+                        tool_model="$(arg tool_model)"/>
+
+</robot>

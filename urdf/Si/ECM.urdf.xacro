@@ -1,12 +1,16 @@
 <?xml version="1.0" ?>
 <robot name="ECM" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:include filename="$(find dvrk_model)/urdf/Si/psm_base.urdf.xacro"/>
-    <xacro:include filename="$(find dvrk_model)/urdf/Si/psm_tool.urdf.xacro"/>
+  <xacro:include filename="$(find dvrk_model)/urdf/Si/PSM_base.urdf.xacro"/>
+  <xacro:include filename="$(find dvrk_model)/urdf/common/PSM_instrument.urdf.xacro"/>
 
-    <link name="world"/>
-    <xacro:psm_base
-        prefix="ECM_"
-        parent_link="world"/>
-    <xacro:psm_tool tool_name="SF826001" prefix="ECM_" parent_link="ECM_tool_parent"/>
+  <link name="world"/>
+
+  <xacro:PSM_base prefix="ECM_"
+                  parent_link="world"/>
+
+  <xacro:PSM_instrument prefix="ECM_"
+                        parent_link="ECM_PSM_tool_parent_link"
+                        shaft_length="0.4670"
+                        tool_model="SF0826001"/>
 </robot>
